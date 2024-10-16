@@ -163,8 +163,28 @@ program
       );
       return;
     }
-
-    // fs.writeFileSync("./data/BudgetTracker.json", JSON.stringify(budgetItems));
   });
+
+  //this program will update a specific item from the budget tracker
+program.command("updateItem")
+.description("updating a specific item from the budget tracker")
+.option("-t | --title <value>", "Title of the item")
+.option("-q | --quantity <value>", "Quantity of the item")
+.option("-p | --price <value>", "Price per quantity")
+.action(function(options){
+    //declare the title variable
+    const title = options.title;
+    const quantity = options.quantity;
+    const price = options.price;
+
+    //read the budget tracker json file
+    const loadSingleBudget = fs.readFileSync(
+      "./data/BudgetTracker.json",
+      "utf-8",
+    );
+
+    //convert the json to an array
+    let singleBudget = JSON.parse(loadSingleBudget);
+})
 
 program.parse(process.argv);

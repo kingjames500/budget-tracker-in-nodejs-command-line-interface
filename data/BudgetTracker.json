@@ -1,4 +1,42 @@
 [
-  { "title": "title 1 for testing", "quantity": "25", "price": "10" },
-  { "title": "Food", "quantity": "2", "price": "12" }
+    {
+        "title": "kingjames1",
+        "quantity": "10",
+        "price": "200"
+    },
+    {
+        "title": "kingjames2",
+        "quantity": "1000",
+        "price": "2"
+    },
+    {
+        "title": "kingjames3",
+        "quantity": "10",
+        "price": "200"
+    },
+    {
+        "title": "kingjames4",
+        "quantity": "10",
+        "price": "200"
+    },
+    {
+        "title": "kingjame5",
+        "quantity": "10",
+        "price": "200"
+    },
+    {
+        "title": "kingjame6",
+        "quantity": "10",
+        "price": "200"
+    },
+    {
+        "title": "kingjame7",
+        "quantity": "10",
+        "price": "200"
+    },
+    {
+        "title": "kingjame8",
+        "quantity": "10",
+        "price": "200"
+    }
 ]

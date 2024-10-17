@@ -1,6 +1,7 @@
 import { Command } from "commander";
 import fs from "fs";
 import chalk from "chalk";
+import { Console } from "console";
 
 const program = new Command();
 
@@ -165,26 +166,60 @@ program
     }
   });
 
-  //this program will update a specific item from the budget tracker
-program.command("updateItem")
-.description("updating a specific item from the budget tracker")
-.option("-t | --title <value>", "Title of the item")
-.option("-q | --quantity <value>", "Quantity of the item")
-.option("-p | --price <value>", "Price per quantity")
-.action(function(options){
+//this program will update a specific item from the budget tracker
+program
+  .command("updateItem")
+  .description("updating a specific item from the budget tracker")
+  .option("-t | --title <value>", "Title of the item")
+  .option("-q | --quantity <value>", "Quantity of the item")
+  .option("-p | --price <value>", "Price per quantity")
+  .action(function (options) {
     //declare the title variable
     const title = options.title;
     const quantity = options.quantity;
     const price = options.price;
 
     //read the budget tracker json file
-    const loadSingleBudget = fs.readFileSync(
-      "./data/BudgetTracker.json",
-      "utf-8",
-    );
+    const loadBudget = fs.readFileSync("./data/BudgetTracker.json", "utf-8");
 
-    //convert the json to an array
-    let singleBudget = JSON.parse(loadSingleBudget);
-})
+    let budget;;
+    if (!loadBudget) {
+      budget = [];
+    }
+    //convert the json  to and array
+      budget = JSON.parse(loadBudget);
+
+    //find the budget with the title
+    if (title) {
+      const existingBudgets = budget.find(
+        (currentBudget) => currentBudget.title === title,
+      );
+      if (!existingBudgets) {
+        console.log(
+          chalk.bgRed(
+            `The budget item with the title '${title}' does not exist`,
+          ),
+        );
+        return;
+      }
+      //update the budget
+      const updatedBudget = budget.indexOf(existingBudgets);
+      budget[updatedBudget].quantity = quantity;
+      budget[updatedBudget].price = price;
+
+      //write the updated budget back to the file
+      fs.writeFileSync("./data/BudgetTracker.json", JSON.stringify(budget));
+      console.log(
+        chalk.bgGreen(
+          `The budget item with the title '${title}' has been updated`,
+        ),
+      );
+    } else {
+      console.log(
+        chalk.bgRed("please input the title of the item you want to update"),
+      );
+    }
+    return;
+  });
 
 program.parse(process.argv);

@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import fs from "fs";
 import chalk from "chalk";
-import { Console } from "console";
+import loadBudget from "./utils/loadBudget.js";
 
 const program = new Command();
 
@@ -31,15 +31,7 @@ program
       price: price,
     };
 
-    //then I read the existing budget tracker items on the json file and save it on a variable
-    const loadBudget = fs.readFileSync("./data/BudgetTracker.json", "utf-8");
-
-    let budget;
-    if (!loadBudget) {
-      budget = [];
-    }
-    //convert the json  to and array
-    budget = JSON.parse(loadBudget);
+    const budget = loadBudget("./data/BudgetTracker.json");
     //I want to make the title of the budget tracker unique so I will check if the title already exist
     const bugdetTrackerExist = budget.find(
       (currentBudget) => currentBudget.title === title,
@@ -65,11 +57,7 @@ program
   .command("listItems")
   .description("listing all the items in the budget tracker")
   .action(function () {
-    //read the budgettracker json file to get all the items
-    const loadBudget = fs.readFileSync("./data/BudgetTracker.json", "utf-8");
-
-    //parse the json file to an array
-    const budget = JSON.parse(loadBudget);
+    const budget = loadBudget("./data/BudgetTracker.json");
 
     //check if the budgetTracker is empty
     if (budget.length === 0) {
@@ -96,15 +84,7 @@ program
     //declare the title variable
     const title = options.title;
 
-    //read the budget tracker json file
-    const loadSingleBudget = fs.readFileSync(
-      "./data/BudgetTracker.json",
-      "utf-8",
-    );
-
-    //convert the json to an array
-    let singleBudget = JSON.parse(loadSingleBudget);
-
+    const budget = loadBudget("./data/BudgetTracker.json");
     //validating the user input and displaying an error message if the user input is invalid
     if (title) {
       const budget = singleBudget.find(
@@ -133,8 +113,7 @@ program
   .action(function (options) {
     const title = options.title;
 
-    const loadBudget = fs.readFileSync("./data/BudgetTracker.json", "utf-8");
-    const budget = JSON.parse(loadBudget);
+    const budget = loadBudget("./data/BudgetTracker.json");
 
     if (budget.length === 0) {
       console.log(chalk.bgYellow("Your budget tracker is empty"));
@@ -179,15 +158,7 @@ program
     const quantity = options.quantity;
     const price = options.price;
 
-    //read the budget tracker json file
-    const loadBudget = fs.readFileSync("./data/BudgetTracker.json", "utf-8");
-
-    let budget;;
-    if (!loadBudget) {
-      budget = [];
-    }
-    //convert the json  to and array
-      budget = JSON.parse(loadBudget);
+    const budget = loadBudget("./data/BudgetTracker.json");
 
     //find the budget with the title
     if (title) {

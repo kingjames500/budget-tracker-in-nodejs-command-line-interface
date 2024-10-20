@@ -1,8 +1,3 @@
-// This module defines a function `getBudgetItem` that retrieves and logs details of a budget item by its title.
-// It imports necessary utilities and functions from "../imports/imports.js".
-// The function loads the budget data from a JSON file, checks if the title exists in the budget,
-// and if found, logs the details of the budget item. If the title does not exist, it logs an error message.
-
 import {
   chalk,
   loadBudget,
@@ -10,6 +5,12 @@ import {
   getBudgetItemByTitle,
 } from "../imports/imports.js";
 
+/**
+ * Retrieves and logs a budget item by its title.
+ *
+ * @param {string} title - The title of the budget item to retrieve.
+ * @returns {void}
+ */
 function getBudgetItem(title) {
   const budget = loadBudget("./data/BudgetTracker.json");
 

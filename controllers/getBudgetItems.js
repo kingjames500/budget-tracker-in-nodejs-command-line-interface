@@ -1,5 +1,14 @@
 import { fs, chalk, loadBudget } from "../imports/imports.js";
 
+/**
+ * Retrieves and prints budget items from a JSON file.
+ *
+ * This function loads budget data from a specified JSON file and prints each budget item.
+ * If the budget tracker is empty, it logs a message indicating that the tracker is empty.
+ *
+ * @function
+ * @name getBudgetItems
+ */
 function getBudgetItems() {
   const budget = loadBudget("./data/BudgetTracker.json");
 

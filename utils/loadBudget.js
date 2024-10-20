@@ -1,3 +1,10 @@
+/**
+ * Loads the budget data from a specified file path.
+ *
+ * @param {string} path - The file path to load the budget data from.
+ * @returns {Array|Object} The parsed budget data from the file. Returns an empty array if the file is empty.
+ */
+
 import fs from "fs";
 
 function loadBudget(path) {

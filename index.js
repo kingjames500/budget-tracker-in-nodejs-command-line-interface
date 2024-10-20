@@ -4,6 +4,7 @@ import updateBudget from "./controllers/updateBudget.js";
 import deleteBudget from "./controllers/deleteBudget.js";
 import getBudgetItem from "./controllers/getBudgetItem.js";
 import getBudgetItems from "./controllers/getBudgetItems.js";
+import parseTitle from "./utils/parseTitle.js";
 
 const program = new Command();
 
@@ -21,8 +22,9 @@ program
   .option("-p | --price <value>", "Price per quantity")
   //the action fuction will have  a parameter options which will have all the values of the options
   .action(function (options) {
+    const args = process.argv.slice(2);
     //defining the variables of the buddget tracker
-    const title = options.title;
+    const title = parseTitle(args, "-t");
     const quantity = options.quantity;
     const price = options.price;
 
@@ -36,8 +38,8 @@ program
   .description("getting a specific item from the budget tracker")
   .option("-t | --title <value>", "Title of the item")
   .action(function (options) {
-    //declare the title variable
-    const title = options.title;
+    const args = process.argv.slice(2);
+    const title = parseTitle(args, "-t");
     getBudgetItem(title);
   });
 
@@ -56,7 +58,8 @@ program
   .description("deleting a specific item from the budget tracker")
   .option("-t | --title <value>", "Title of the item")
   .action(function (options) {
-    const title = options.title;
+    const args = process.argv.slice(2);
+    const title = parseTitle(args, "-t");
 
     deleteBudget(title);
   });
@@ -66,16 +69,19 @@ program
   .command("updateItem")
   .description("updating a specific item from the budget tracker")
   .option("-t | --title <value>", "Title of the item")
+  .option("-nt | --newTitle <value>", "New Title of the item")
   .option("-q | --quantity <value>", "Quantity of the item")
   .option("-p | --price <value>", "Price per quantity")
   .action(function (options) {
-    //declare the title variable
-    const title = options.title;
+    const args = process.argv.slice(2);
+    const title = parseTitle(args, "-t");
+
+    const newTitle = parseTitle(args, "-nt");
     const quantity = options.quantity;
     const price = options.price;
 
     //calling the function for updating the budget
-    updateBudget(title, price, quantity);
+    updateBudget(title, price, quantity, newTitle);
   });
 
 program.parse(process.argv);

@@ -26,8 +26,8 @@ function addBudget(title, quantity, price) {
     title: title,
     quantity: quantity,
     price: price,
-    createdAt: new Date().toLocaleString,
-    updatedAt: new Date().toLocaleString,
+    createdAt: new Date().toLocaleString(),
+    updatedAt: 0,
   };
 
   const budget = loadBudget("./data/BudgetTracker.json");

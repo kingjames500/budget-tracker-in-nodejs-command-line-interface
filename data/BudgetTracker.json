@@ -1,4 +1,30 @@
 [
-  { "title": "gambling init", "quantity": "30", "price": "23" },
-  { "title": "gambling", "quantity": "30", "price": "23" }
+  {
+    "title": "kingjames12",
+    "quantity": "10",
+    "price": "12",
+    "createdAt": "21/10/2024, 10:23:48",
+    "updatedAt": 0
+  },
+  {
+    "title": "kingjames",
+    "quantity": "10",
+    "price": "12",
+    "createdAt": "21/10/2024, 12:53:37",
+    "updatedAt": 0
+  },
+  {
+    "title": "kingjames1",
+    "quantity": "10",
+    "price": "12",
+    "createdAt": "21/10/2024, 12:53:43",
+    "updatedAt": 0
+  },
+  {
+    "title": "king james",
+    "quantity": "10",
+    "price": "12",
+    "createdAt": "21/10/2024, 12:53:56",
+    "updatedAt": 0
+  }
 ]

@@ -21,10 +21,12 @@ function getBudgetItems() {
   //loop through the budget array and print the items
   budget.forEach((currentBudget) => {
     console.log(
-      chalk.green(
-        `Title: ${currentBudget.title} \n Quantity: ${currentBudget.quantity} \n Price: ${currentBudget.price}`,
+      chalk.blue(
+        `{Title: ${chalk.white(currentBudget.title)}  Quantity: ${chalk.white(currentBudget.quantity)}  Price: ${chalk.white(currentBudget.price)}}`,
       ),
     );
+
+    return;
   });
 }
 

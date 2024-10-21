@@ -22,6 +22,8 @@ function getBudgetItem(title) {
       console.log(`Title: ${budgetItem.title}`);
       console.log(`Quantity: ${budgetItem.quantity}`);
       console.log(`Price: ${budgetItem.price}`);
+      console.log(`Created At: ${budgetItem.createdAt}`);
+      console.log(`Updated At: ${budgetItem.updatedAt}`);
       return;
     }
   }

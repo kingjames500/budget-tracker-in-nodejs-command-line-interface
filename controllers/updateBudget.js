@@ -44,6 +44,7 @@ function updateBudget(title, newPrice, newQuantity, newTitle) {
     const updatedBuget = budget.map((currentBudget) => {
       if (currentBudget.title === title) {
         currentBudget.price = newPrice;
+        currentBudget.updatedAt = new Date().toLocaleString();
         return currentBudget;
       }
       return currentBudget;
@@ -57,6 +58,7 @@ function updateBudget(title, newPrice, newQuantity, newTitle) {
     const updatedBudget = budget.map((currentBudget) => {
       if (currentBudget.title === title) {
         currentBudget.quantity = newQuantity;
+        currentBudget.updatedAt = new Date().toLocaleString().getMonth();
         return currentBudget;
       }
       return currentBudget;
@@ -77,6 +79,7 @@ function updateBudget(title, newPrice, newQuantity, newTitle) {
     const updatedBudget = budget.map((currentBudget) => {
       if (currentBudget.title === title) {
         currentBudget.title = newTitle;
+        currentBudget.updatedAt = new Date().toLocaleString();
         return currentBudget;
       }
       return currentBudget;

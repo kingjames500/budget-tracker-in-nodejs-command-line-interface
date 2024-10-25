@@ -58,7 +58,7 @@ function updateBudget(title, newPrice, newQuantity, newTitle) {
     const updatedBudget = budget.map((currentBudget) => {
       if (currentBudget.title === title) {
         currentBudget.quantity = newQuantity;
-        currentBudget.updatedAt = new Date().toLocaleString().getMonth();
+        currentBudget.updatedAt = new Date().toLocaleString();
         return currentBudget;
       }
       return currentBudget;

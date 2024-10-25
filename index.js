@@ -28,7 +28,7 @@ program
     const quantity = options.quantity;
     const price = options.price;
 
-    //calling the add budget function
+    //calling the add budget function 
     addBudget(title, quantity, price);
   });
 
